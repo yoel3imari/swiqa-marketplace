@@ -10,7 +10,7 @@ module.exports = {
         neutral: "#C697DBff",
         onPrimary: "#000000",
         onSecondary: "#fcfcfc",
-        gray: "#d4d3d2",
+        customGray: "#d4d3d2",
       },
     },
   },

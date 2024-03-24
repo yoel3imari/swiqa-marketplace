@@ -11,7 +11,8 @@ export default function LoginScreen() {
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
   const onPress = React.useCallback(async () => {
     try {
-      const { createdSessionId, signIn, signUp, setActive } = await startOAuthFlow();
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
 
       if (createdSessionId) {
         setActive({ session: createdSessionId });
@@ -25,11 +26,13 @@ export default function LoginScreen() {
 
   return (
     <View>
-      <Image
-        source={require("../../assets/images/auth-bg.jpg")}
-        className="w-[400px] h-[400px] mb-4"
-      />
-      <View className="bg-white px-4 pt-8 shadow-md">
+      <View className="flex items-center w-full">
+        <Image
+          source={require("../../assets/images/auth-bg.jpg")}
+          className="w-[400px] h-[400px]"
+        />
+      </View>
+      <View className="bg-white h-full px-4 pt-8 shadow-md">
         <Text
           className="
             text-center
@@ -49,14 +52,13 @@ export default function LoginScreen() {
             w-full
           "
         >
-          A marketplace to Buy and sell used items online.
-          Make money online by selling things that you don't use anymore
-          to people who need them.
+          A marketplace to Buy and sell used items online. Make money online by
+          selling things that you don't use anymore to people who need them.
         </Text>
         <View className="px-8">
-        <TouchableOpacity
-          onPress={onPress}
-          className="
+          <TouchableOpacity
+            onPress={onPress}
+            className="
             p-4
             mt-8
           bg-primary
@@ -65,9 +67,9 @@ export default function LoginScreen() {
             items-center 
             justify-center
           "
-        >
-          <Text className="text-onPrimary font-semibold">Get Started</Text>
-        </TouchableOpacity>
+          >
+            <Text className="text-onPrimary font-semibold">Get Started</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

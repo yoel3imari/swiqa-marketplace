@@ -96,18 +96,18 @@ const AddPostScreen = () => {
       const res = await addDoc(collection(db, "posts"), {
         ...values,
         latitude: mapRegion.latitude,
-        longitude: mapRegion.longitude
-      })
+        longitude: mapRegion.longitude,
+      });
     } catch (error) {
       // console.error(error);
-      Alert.alert(error.message)
+      Alert.alert(error.message);
     }
   };
 
-  const StyledPicker = styled(
-    Picker,
-    "bg-white border-2 border-primary rounded-md p-2 mb-4"
-  );
+  // const StyledPicker = styled(
+  //   Picker,
+  //   "bg-white border-2 border-primary rounded-md p-2 mb-4"
+  // );
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -117,11 +117,11 @@ const AddPostScreen = () => {
           px-4
         "
       >
-        <View className="mb-8 w-full text-center">
-          <Text className="mb-2 text-2xl font-bold text-center text-primary">
+        <View className="mb-8 w-full">
+          <Text className="mb-2 text-3xl font-bold text-primary">
             Add New Post
           </Text>
-          <Text className="text-center text-onPrimary">
+          <Text className=" text-onPrimary">
             Create a new post for an item you want to sell as a used product.
             Make sure you fill the form below with the right infos to reach the
             right crowd. Good luck!
@@ -137,7 +137,8 @@ const AddPostScreen = () => {
                 rounded-md
                 text-gray-900
                 font-semibold
-                p-2
+                py-3.5
+                px-2
                 mb-4
                 bg-white
               "
@@ -152,7 +153,8 @@ const AddPostScreen = () => {
                 rounded-md
                 text-gray-900
                 font-semibold
-                p-2
+                py-3.5
+                px-2
                 mb-4
                 bg-white
               "
@@ -169,7 +171,8 @@ const AddPostScreen = () => {
                 rounded-md
                 text-gray-900
                 font-semibold
-                p-2
+                py-3.5
+                px-2
                 mb-4
                 bg-white
               "
@@ -178,19 +181,27 @@ const AddPostScreen = () => {
                 value={values.price}
                 onChangeText={handleChange("price")}
               />
-              <StyledPicker
+
+              <View
                 className="
-                bg-white
-                p-2
-                mb-4
-              "
-                selectedValue={values.categ}
-                onValueChange={handleChange("categ")}
+                  border-2
+                  border-primary
+                  rounded-md
+                  text-gray-900
+                  font-semibold
+                  mb-4
+                  bg-white
+                "
               >
-                {categList.map((c, index) => (
-                  <Picker.Item key={index} label={c.label} value={c.id} />
-                ))}
-              </StyledPicker>
+                <Picker
+                  selectedValue={values.categ}
+                  onValueChange={handleChange("categ")}
+                >
+                  {categList.map((c, index) => (
+                    <Picker.Item key={index} label={c.label} value={c.id} />
+                  ))}
+                </Picker>
+              </View>
 
               <View className="h-[200px] mb-4">
                 <MapView
